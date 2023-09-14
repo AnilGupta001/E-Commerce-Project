@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { useEffect } from "react";
 import './app.css';
 import { BottomPart } from "./BottomPart";
+import Product from "./Product";
 export  default  function Main() {
   const arr = [
      "https://rukminim1.flixcart.com/fk-p-flap/1400/650/image/4b625ff9a92502d6.jpg?q=90",
@@ -31,10 +32,26 @@ const ar=["https://rukminim1.flixcart.com/fk-p-flap/150/150/image/12b7bf76b18c16
 "	https://rukminim1.flixcart.com/fk-p-flap/150/150/image/c28bb9948b4e0291.jpg?q=90",
 "	https://rukminim1.flixcart.com/fk-p-flap/150/150/image/c28bb9948b4e0291.jpg?q=90",
 ]
+const [inputValue, setInputValue] = useState('');
 
+const handleInputChange = (e) => {
+  // Set the input value to the state
+  setInputValue(e.target.value);
+
+ 
+};
   return (
    
     <div className="py-10">
+    <input
+      type="text"
+      className="i-1"
+      placeholder="Search Here"
+      value={inputValue}
+      onChange={handleInputChange}
+    
+    />
+    {inputValue==''?"":<Product/>}
   <div className="flex justify-center items-center space-x-5 bg-gray-100 p-4 rounded-lg">
     <div className="flex items-center">
       <span className="bg-red-700 p-2 h-8 w-8 rounded-full cursor-pointer hover:bg-green-500 transition duration-300"></span>

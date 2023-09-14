@@ -14,10 +14,39 @@ export default function Product(){
     };
     apiCall(); // Call the function here
 }, []);
+const [selectedOption, setSelectedOption] = useState('lth'); // Default option
+
+const handleOptionChange = (e) => {
+  setSelectedOption(e.target.value);
+  console.log(selectedOption)
+  if(selectedOption=='lth'){
+    data.sort((a,b)=>{
+return b.price-a.price;
+    })
+  }
+ if (selectedOption=='htl'){
+      data.sort((a,b)=>{
+        return a.price-b.price;
+      })
+    
+    console.log(data)
+  }
+};
 
    return (
     <>
-
+  <div className='filter'>
+      <h4>Filter Product Based On Price</h4>
+      <select
+        name="Select"
+        id="select"
+        value={selectedOption}
+        onChange={handleOptionChange}
+      >
+        <option value="lth" label='Low to High'></option>
+        <option value="htl" label='High to Low'></option>
+      </select>
+    </div>
     <div className="items">
     {data.map((item) => (
       
